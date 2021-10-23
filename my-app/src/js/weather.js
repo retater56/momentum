@@ -10,8 +10,6 @@ async function getWeather(cityName = 'Minsk') {
     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&lang=en&appid=fe59c3c352d57dba47fd1f628111e65d&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(url)
-  console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
   weather.value = `${cityName}`
   weatherIcon.className = 'weather-icon owf';

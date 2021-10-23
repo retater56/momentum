@@ -2,6 +2,7 @@ import showDate from './js/date';
 import { showGreeting, setLocaleStorage, getLocalStorage } from './js/greeting';
 import { setBg } from './js/setBg';
 import getWeather from './js/weather';
+import getQuotes from './js/quotes';
 
 const date = new Date();
 const hours = date.getHours();
@@ -39,3 +40,9 @@ weather.addEventListener('change', (e) => {
   let city = e.target.value;
   getWeather(city);
 });
+
+const quote = document.querySelector('.change-quote');
+
+getQuotes()
+
+quote.addEventListener('click', () => getQuotes())
