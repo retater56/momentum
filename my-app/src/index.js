@@ -1,6 +1,7 @@
 import showDate from './js/date';
 import { showGreeting, setLocaleStorage, getLocalStorage } from './js/greeting';
 import { setBg } from './js/setBg';
+import getWeather from './js/weather';
 
 const date = new Date();
 const hours = date.getHours();
@@ -30,3 +31,11 @@ slideNext.addEventListener('click', () => {
   setBg(hours, random);
 });
 
+const weather = document.querySelector('.city');
+
+getWeather();
+
+weather.addEventListener('change', (e) => {
+  let city = e.target.value;
+  getWeather(city);
+});
