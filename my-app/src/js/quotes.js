@@ -8,7 +8,6 @@ function getQuotes() {
     .then((res) => res.json())
     .then((data) => {
       random === random ? (random += 1) : random;
-      console.log(random)
       quote.innerHTML = data.quotes[random].quote;
       author.innerHTML = data.quotes[random].author;
     });

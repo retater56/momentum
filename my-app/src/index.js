@@ -3,6 +3,7 @@ import { showGreeting, setLocaleStorage, getLocalStorage } from './js/greeting';
 import { setBg } from './js/setBg';
 import getWeather from './js/weather';
 import getQuotes from './js/quotes';
+import playList from './js/playList';
 
 const date = new Date();
 const hours = date.getHours();
@@ -43,6 +44,62 @@ weather.addEventListener('change', (e) => {
 
 const quote = document.querySelector('.change-quote');
 
-getQuotes()
+getQuotes();
 
-quote.addEventListener('click', () => getQuotes())
+quote.addEventListener('click', () => getQuotes());
+
+let isPlay = false;
+let playNum = 0;
+const audio = new Audio();
+
+const playBtn = document.querySelector('.play');
+const playPrevBtn = document.querySelector('.play-prev');
+const playNextBtn = document.querySelector('.play-next');
+const playListActive = document.querySelectorAll('.play-item');
+
+function playMusic() {
+  audio.src = playList[playNum].src;
+  audio.currentTime = 0;
+  audio.play();
+  playListActive[playNum].classList.add('item-active');
+}
+
+playBtn.addEventListener('click', () => {
+  playBtn.classList.toggle('pause');
+
+  if (!isPlay) {
+    isPlay = true;
+    playMusic();
+  } else {
+    isPlay = false;
+    audio.pause();
+  }
+});
+
+playNextBtn.addEventListener('click', () => {
+  if (playNum == playList.length - 1) {
+    playNum = 0;
+    playListActive[playList.length - 1].classList.remove('item-active')
+  } else {
+    playNum += 1;
+    playListActive[playNum - 1].classList.remove('item-active')
+  }
+
+  playBtn.classList.add('pause');
+  isPlay = true;
+  playMusic();
+});
+
+playPrevBtn.addEventListener('click', () => {
+  if (playNum == 0) {
+    playNum = playList.length - 1;
+    playListActive[0].classList.remove('item-active')
+  } else {
+    playNum -= 1;
+    playListActive[playNum + 1].classList.remove('item-active')
+  }
+
+  playBtn.classList.add('pause');
+  isPlay = true;
+  playMusic();
+});
