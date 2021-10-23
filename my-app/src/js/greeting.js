@@ -1,7 +1,5 @@
-export function showGreeting() {
+export function showGreeting(hours) {
   let greeting = document.querySelector('.greeting');
-  let date = new Date();
-  let hours = date.getHours();
   if (hours >= 0 && hours < 6) {
     greeting.textContent = 'Good night,';
   } else if (hours >= 6 && hours < 12) {
@@ -11,7 +9,6 @@ export function showGreeting() {
   } else if (hours >= 18 && hours < 24) {
     greeting.textContent = 'Good evening,';
   }
-  setTimeout(showGreeting, 1000);
 }
 
 export function setLocaleStorage() {
