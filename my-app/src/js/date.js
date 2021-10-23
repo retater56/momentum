@@ -1,15 +1,15 @@
 function showDate() {
   let date = new Date();
   const time = document.querySelector('.time');
-  const day = document.querySelector('.date');
+  // const day = document.querySelector('.date');
 
-  const options = {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-  };
+  // const options = {
+  //   weekday: 'long',
+  //   month: 'long',
+  //   day: 'numeric',
+  // };
   time.textContent = date.toLocaleTimeString();
-  day.textContent = date.toLocaleDateString('en-US', options);
+  // day.textContent = date.toLocaleDateString(lang, options);
   setTimeout(showDate, 1000);
 }
 

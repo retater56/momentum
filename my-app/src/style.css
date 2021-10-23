@@ -173,7 +173,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40vh;
+  height: 50vh;
   min-height: 260px;
   padding: 20px;
 }
@@ -242,13 +242,46 @@ body {
   opacity: .6;
 }
 
+.language {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  width: 40%;
+  height: 15vh;
+}
+
+.language-change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  border-radius: 15px;
+  background-color: #fff;
+  opacity: 0.5;
+  color: black;
+  width: 90px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.language-change:hover {
+  opacity: 0.7;
+}
+
+.language-change:active {
+  opacity: 1;
+  transition: .3s;
+  transform: scale(1.1);
+}
+
 .footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 30vh;
+  height: 15vh;
   min-height: 160px;
   padding: 20px;
 }
@@ -270,6 +303,10 @@ body {
   .time {
     min-height: 80px;
     font-size: 72px;
+  }
+
+  .main {
+    height: 55vh;
   }
 
   .greeting-container {

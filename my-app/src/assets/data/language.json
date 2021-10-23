@@ -1,0 +1,10 @@
+{
+  "greeting": {
+    "eng": ["Good night,", "Good morning,", "Good afternoon,", "Good evening,"],
+    "ru": ["Доброй ночи, ", "Доброе утро, ", "Добрый день, ", "Добрый вечер, "]
+  },
+  "weather": {
+    "eng": ["Wind speed", "Humidity"],
+    "ru": ["Скорость ветра", "Влажность"]
+  }
+}

@@ -8,7 +8,47 @@ import playList from './js/playList';
 const date = new Date();
 const hours = date.getHours();
 
-showGreeting(hours);
+let lang = 'eng';
+let nextLang = 'ru';
+
+const changeLangBtn = document.querySelector('.language-change');
+changeLangBtn.innerHTML = 'RU';
+
+showGreeting(hours, lang);
+
+const options = {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+};
+const day = document.querySelector('.date');
+day.textContent = date.toLocaleDateString(lang, options);
+
+const weather = document.querySelector('.city');
+let city;
+getWeather(lang);
+
+weather.addEventListener('change', (e) => {
+  city = e.target.value;
+  getWeather(lang, city);
+});
+
+changeLangBtn.addEventListener('click', () => {
+  if (lang == 'eng') {
+    lang = 'ru';
+    nextLang = 'eng';
+  } else if (lang == 'ru') {
+    lang = 'eng';
+    nextLang = 'ru';
+  }
+  changeLangBtn.innerHTML = nextLang.toUpperCase();
+  showGreeting(hours, lang);
+
+  day.textContent = date.toLocaleDateString(lang, options);
+
+  getWeather(lang, city);
+});
+
 window.addEventListener('beforeunload', setLocaleStorage);
 window.addEventListener('load', getLocalStorage);
 
@@ -31,15 +71,6 @@ slidePrev.addEventListener('click', () => {
 slideNext.addEventListener('click', () => {
   random != 20 ? (random = +random + 1) : (random = 1);
   setBg(hours, random);
-});
-
-const weather = document.querySelector('.city');
-
-getWeather();
-
-weather.addEventListener('change', (e) => {
-  let city = e.target.value;
-  getWeather(city);
 });
 
 const quote = document.querySelector('.change-quote');
@@ -79,10 +110,10 @@ playBtn.addEventListener('click', () => {
 playNextBtn.addEventListener('click', () => {
   if (playNum == playList.length - 1) {
     playNum = 0;
-    playListActive[playList.length - 1].classList.remove('item-active')
+    playListActive[playList.length - 1].classList.remove('item-active');
   } else {
     playNum += 1;
-    playListActive[playNum - 1].classList.remove('item-active')
+    playListActive[playNum - 1].classList.remove('item-active');
   }
 
   playBtn.classList.add('pause');
@@ -93,10 +124,10 @@ playNextBtn.addEventListener('click', () => {
 playPrevBtn.addEventListener('click', () => {
   if (playNum == 0) {
     playNum = playList.length - 1;
-    playListActive[0].classList.remove('item-active')
+    playListActive[0].classList.remove('item-active');
   } else {
     playNum -= 1;
-    playListActive[playNum + 1].classList.remove('item-active')
+    playListActive[playNum + 1].classList.remove('item-active');
   }
 
   playBtn.classList.add('pause');
