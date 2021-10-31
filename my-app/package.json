@@ -3,6 +3,7 @@
   "description": "My new js application",
   "private": true,
   "name": "my-app",
+  "type": "module",
   "scripts": {
     "start": "rss-scripts start",
     "build": "rss-scripts build"

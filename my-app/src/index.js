@@ -1,9 +1,9 @@
-import showDate from './js/date';
-import { showGreeting, setLocaleStorage, getLocalStorage } from './js/greeting';
-import { setBg } from './js/setBg';
-import getWeather from './js/weather';
-import getQuotes from './js/quotes';
-import playList from './js/playList';
+import showDate from './js/date.js';
+import { showGreeting, setLocaleStorage, getLocalStorage } from './js/greeting.js';
+import { setBg } from './js/setBg.js';
+import getWeather from './js/weather.js';
+import getQuotes from './js/quotes.js';
+import playList from './js/playList.js';
 
 const date = new Date();
 const hours = date.getHours();
